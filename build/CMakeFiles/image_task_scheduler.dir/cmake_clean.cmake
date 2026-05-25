@@ -1,0 +1,35 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/image_task_scheduler.dir/src/blur_processor.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/blur_processor.cpp.o.d"
+  "CMakeFiles/image_task_scheduler.dir/src/config.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/config.cpp.o.d"
+  "CMakeFiles/image_task_scheduler.dir/src/factory_processor.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/factory_processor.cpp.o.d"
+  "CMakeFiles/image_task_scheduler.dir/src/file_utils.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/file_utils.cpp.o.d"
+  "CMakeFiles/image_task_scheduler.dir/src/gray_processor.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/gray_processor.cpp.o.d"
+  "CMakeFiles/image_task_scheduler.dir/src/image_task.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/image_task.cpp.o.d"
+  "CMakeFiles/image_task_scheduler.dir/src/logger.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/logger.cpp.o.d"
+  "CMakeFiles/image_task_scheduler.dir/src/main.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/main.cpp.o.d"
+  "CMakeFiles/image_task_scheduler.dir/src/resize_processor.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/resize_processor.cpp.o.d"
+  "CMakeFiles/image_task_scheduler.dir/src/sobel_processor.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/sobel_processor.cpp.o.d"
+  "CMakeFiles/image_task_scheduler.dir/src/task_scheduler.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/task_scheduler.cpp.o.d"
+  "CMakeFiles/image_task_scheduler.dir/src/thread_pool.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/thread_pool.cpp.o.d"
+  "CMakeFiles/image_task_scheduler.dir/src/timer.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/timer.cpp.o.d"
+  "image_task_scheduler"
+  "image_task_scheduler.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/image_task_scheduler.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

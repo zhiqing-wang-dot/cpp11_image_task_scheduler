@@ -1,0 +1,121 @@
+#include "image_task_scheduler/config.hpp"
+
+#include <iostream>
+
+namespace 
+{
+bool para_int (const std::string& text, int* value)
+{
+    char* end = nullptr;
+    // std::strtol 函数将字符串转换为长整数，参数 10 表示使用十进制
+    long result = std::strtol(text.c_str(), &end, 10);
+    if (end == text.c_str() || *end != '\0') // 如果一个数字都没有被转换，或者转换后还有剩余字符
+    {
+        return false; // 转换失败，或者结果不是正整数
+    }
+    *value = static_cast<int>(result);
+    return true;
+}
+
+bool para_bool (const std::string& text, bool* value)
+{
+    if (text == "true")
+    {
+        *value = true;
+        return true;
+    }
+    if (text == "false")
+    {
+        *value = false;
+        return true;
+    }
+    return false;
+}
+} // namespace 
+
+
+Config::Config()
+: input_dir("./images")
+, output_dir("./output")
+, thread_count(4)
+, mode("sobel")
+, use_future(false) 
+{ }
+
+bool Config::parse(int argc, char** argv, Config* config)
+{
+    if (config == nullptr)
+    {
+        return false;
+    }
+
+    for (int i = 1; i < argc; i++)
+    {
+        std::string arg = argv[i];
+        if (i +1 >= argc)
+        {
+            print_usage();
+            return false;
+        }
+
+        std::string value = argv[++i];
+        if (arg == "--input")
+        {
+            config->input_dir = value;
+        }
+        else if (arg == "--output")
+        {
+            config->output_dir = value;
+        }
+        else if (arg == "--threads")
+        {
+            if (!para_int(value, &config->thread_count))
+            {
+                print_usage();
+                return false;
+            }
+        }
+        else if (arg == "--mode")
+        {
+            config->mode = value;
+        }
+        else if (arg == "--use_future")
+        {
+            if (!para_bool(value, &config->use_future))
+            {
+                print_usage();
+                return false;
+            }
+        }
+        else
+        {
+            print_usage();
+            return false;
+        }
+    }
+
+    if (!config->is_valid_mode() || config->thread_count <= 0)
+    {
+        print_usage();
+        return false;
+    }
+    return true;
+}
+
+void Config::print_usage()
+{
+    std::cout << "Usage:\n"
+              << "  image_task_scheduler "
+              << "--input ./images "
+              << "--output ./output "
+              << "--threads 4 "
+              << "--mode sobel "
+              << "--use_future false\n"
+              << "\n"
+              << "Modes: gray, sobel, resize, blur\n";
+}
+
+bool Config::is_valid_mode() const
+{
+    return mode == "sobel" || mode == "gray" || mode == "blur" || mode == "resize";
+}

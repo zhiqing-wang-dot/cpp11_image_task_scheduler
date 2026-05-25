@@ -1,0 +1,80 @@
+[
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/main.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/main.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/main.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/timer.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/timer.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/timer.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/timer.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/logger.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/logger.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/logger.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/logger.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/image_task.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/image_task.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/image_task.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/image_task.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/gray_processor.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/gray_processor.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/gray_processor.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/gray_processor.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/sobel_processor.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/sobel_processor.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/sobel_processor.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/sobel_processor.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/resize_processor.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/resize_processor.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/resize_processor.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/resize_processor.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/blur_processor.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/blur_processor.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/blur_processor.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/blur_processor.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/factory_processor.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/factory_processor.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/factory_processor.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/factory_processor.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/file_utils.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/file_utils.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/file_utils.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/file_utils.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/config.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/config.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/config.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/config.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/thread_pool.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/thread_pool.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/thread_pool.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/thread_pool.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/task_scheduler.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/task_scheduler.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/task_scheduler.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/task_scheduler.cpp.o"
+}
+]
