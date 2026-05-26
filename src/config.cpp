@@ -33,7 +33,6 @@ bool para_bool (const std::string& text, bool* value)
 }
 } // namespace 
 
-
 Config::Config()
 : input_dir("./images")
 , output_dir("./output")
@@ -51,10 +50,10 @@ bool Config::parse(int argc, char** argv, Config* config)
 
     for (int i = 1; i < argc; i++)
     {
-        std::string arg = argv[i];
-        if (i +1 >= argc)
+        std::string arg = argv[i]; // 将参数转换为 std::string 以便比较
+        if (i + 1 >= argc) // i 是下标， argc 是参数个数
         {
-            print_usage();
+            print_usage(); 
             return false;
         }
 
@@ -94,15 +93,17 @@ bool Config::parse(int argc, char** argv, Config* config)
         }
     }
 
+    // 验证模式和线程数是否合法
     if (!config->is_valid_mode() || config->thread_count <= 0)
     {
         print_usage();
         return false;
     }
+    
     return true;
 }
 
-void Config::print_usage()
+void Config::print_usage() // 打印使用说明
 {
     std::cout << "Usage:\n"
               << "  image_task_scheduler "

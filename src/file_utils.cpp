@@ -111,7 +111,7 @@ std::vector<std::string> list_image_files(const std::string& input_dir)
         }
 
         std::string full_path = input_dir + "/" + name;
-        // 注意排除不是文件夹的目录项
+        // 判断是否是文件且是图片文件
         if (!is_directory(full_path) && is_image_file(full_path))
         {
             image_files.push_back(full_path);
