@@ -251,6 +251,62 @@ CMakeFiles/image_task_scheduler.dir/src/task_scheduler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/image_task_scheduler.dir/src/task_scheduler.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wzq/MyProject/cpp11_image_task_scheduler/src/task_scheduler.cpp -o CMakeFiles/image_task_scheduler.dir/src/task_scheduler.cpp.s
 
+CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.o: CMakeFiles/image_task_scheduler.dir/flags.make
+CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.o: /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_analyzer.cpp
+CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.o: CMakeFiles/image_task_scheduler.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/wzq/MyProject/cpp11_image_task_scheduler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.o -MF CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.o.d -o CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_analyzer.cpp
+
+CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_analyzer.cpp > CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.i
+
+CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_analyzer.cpp -o CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.s
+
+CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.o: CMakeFiles/image_task_scheduler.dir/flags.make
+CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.o: /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_report_write.cpp
+CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.o: CMakeFiles/image_task_scheduler.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/wzq/MyProject/cpp11_image_task_scheduler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.o -MF CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.o.d -o CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_report_write.cpp
+
+CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_report_write.cpp > CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.i
+
+CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_report_write.cpp -o CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.s
+
+CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.o: CMakeFiles/image_task_scheduler.dir/flags.make
+CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.o: /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_scheduler.cpp
+CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.o: CMakeFiles/image_task_scheduler.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/wzq/MyProject/cpp11_image_task_scheduler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.o -MF CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.o.d -o CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_scheduler.cpp
+
+CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_scheduler.cpp > CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.i
+
+CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_scheduler.cpp -o CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.s
+
+CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o: CMakeFiles/image_task_scheduler.dir/flags.make
+CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o: /home/wzq/MyProject/cpp11_image_task_scheduler/src/dataset_cleaner.cpp
+CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o: CMakeFiles/image_task_scheduler.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/wzq/MyProject/cpp11_image_task_scheduler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o -MF CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o.d -o CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/dataset_cleaner.cpp
+
+CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wzq/MyProject/cpp11_image_task_scheduler/src/dataset_cleaner.cpp > CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.i
+
+CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wzq/MyProject/cpp11_image_task_scheduler/src/dataset_cleaner.cpp -o CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.s
+
 # Object files for target image_task_scheduler
 image_task_scheduler_OBJECTS = \
 "CMakeFiles/image_task_scheduler.dir/src/main.cpp.o" \
@@ -265,7 +321,11 @@ image_task_scheduler_OBJECTS = \
 "CMakeFiles/image_task_scheduler.dir/src/file_utils.cpp.o" \
 "CMakeFiles/image_task_scheduler.dir/src/config.cpp.o" \
 "CMakeFiles/image_task_scheduler.dir/src/thread_pool.cpp.o" \
-"CMakeFiles/image_task_scheduler.dir/src/task_scheduler.cpp.o"
+"CMakeFiles/image_task_scheduler.dir/src/task_scheduler.cpp.o" \
+"CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.o" \
+"CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.o" \
+"CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.o" \
+"CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o"
 
 # External object files for target image_task_scheduler
 image_task_scheduler_EXTERNAL_OBJECTS =
@@ -283,6 +343,10 @@ image_task_scheduler: CMakeFiles/image_task_scheduler.dir/src/file_utils.cpp.o
 image_task_scheduler: CMakeFiles/image_task_scheduler.dir/src/config.cpp.o
 image_task_scheduler: CMakeFiles/image_task_scheduler.dir/src/thread_pool.cpp.o
 image_task_scheduler: CMakeFiles/image_task_scheduler.dir/src/task_scheduler.cpp.o
+image_task_scheduler: CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.o
+image_task_scheduler: CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.o
+image_task_scheduler: CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.o
+image_task_scheduler: CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o
 image_task_scheduler: CMakeFiles/image_task_scheduler.dir/build.make
 image_task_scheduler: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.5.4d
 image_task_scheduler: /usr/lib/x86_64-linux-gnu/libopencv_alphamat.so.4.5.4d
@@ -339,7 +403,7 @@ image_task_scheduler: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.5.4d
 image_task_scheduler: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.5.4d
 image_task_scheduler: /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.5.4d
 image_task_scheduler: CMakeFiles/image_task_scheduler.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/wzq/MyProject/cpp11_image_task_scheduler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable image_task_scheduler"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/wzq/MyProject/cpp11_image_task_scheduler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable image_task_scheduler"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/image_task_scheduler.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

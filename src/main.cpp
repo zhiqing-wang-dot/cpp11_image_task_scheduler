@@ -1,43 +1,44 @@
 #include <atomic>
-#include <chrono>
+#include <condition_variable>
 #include <future>
 #include <iostream>
 #include <memory>
 #include <mutex>
-#include <thread>
+#include <string>
 #include <vector>
 
 #include <opencv2/imgcodecs.hpp>
 
 #include "image_task_scheduler/config.hpp"
+#include "image_task_scheduler/dataset_cleaner.hpp"
 #include "image_task_scheduler/factory_processor.hpp"
 #include "image_task_scheduler/file_utils.hpp"
 #include "image_task_scheduler/image_processor.hpp"
+#include "image_task_scheduler/image_quality.hpp"
 #include "image_task_scheduler/image_result.hpp"
 #include "image_task_scheduler/image_task.hpp"
 #include "image_task_scheduler/logger.hpp"
+#include "image_task_scheduler/quality_scheduler.hpp"
 #include "image_task_scheduler/task_scheduler.hpp"
 #include "image_task_scheduler/timer.hpp"
 
 namespace
 {
 
-// 打印性能总结
-void print_performance_summary(int total_tasks, // 总图片数量
-                               int success_tasks, // 成功处理的图片数量
-                               int failed_tasks, // 处理失败的图片数量
-                               long long total_wall_cost, // 总耗时（毫秒）
-                               const std::vector<long long>& costs) // 每个任务的耗时列表（毫秒）
+void print_performance_summary(int total_tasks,
+                               int success_tasks,
+                               int failed_tasks,
+                               long long total_wall_cost,
+                               const std::vector<long long>& costs)
 {
     long long total_task_cost = 0;
     long long max_task_cost = 0;
     long long min_task_cost = 0;
 
-    if (!costs.empty()) 
+    if (!costs.empty())
     {
         min_task_cost = costs[0];
 
-        // 计算总耗时、最大耗时和最小耗时
         for (std::size_t i = 0; i < costs.size(); ++i)
         {
             total_task_cost += costs[i];
@@ -54,7 +55,7 @@ void print_performance_summary(int total_tasks, // 总图片数量
         }
     }
 
-    double avg_task_cost = 0.0; // 平均耗时（毫秒）
+    double avg_task_cost = 0.0;
     if (!costs.empty())
     {
         avg_task_cost =
@@ -62,7 +63,7 @@ void print_performance_summary(int total_tasks, // 总图片数量
             static_cast<double>(costs.size());
     }
 
-    double throughput = 0.0; // 吞吐量（图片/秒）
+    double throughput = 0.0;
     if (total_wall_cost > 0)
     {
         throughput =
@@ -82,121 +83,139 @@ void print_performance_summary(int total_tasks, // 总图片数量
     std::cout << "=========================================" << std::endl;
 }
 
-} // namespace
-
-int main(int argc, char** argv)
+bool run_quality_stage(const Config& config,
+                       const std::vector<std::string>& image_files,
+                       std::vector<std::string>* good_images)
 {
-    Config config; // 定义配置对象
-    if (!config.parse(argc, argv, &config)) // 解析命令行参数，如果失败则打印使用说明并退出
+    if (good_images == nullptr)
     {
-        return 1;
+        return false;
     }
 
-    if (!FileUtils::is_directory(config.input_dir))
+    std::string report_file = config.output_dir + "/report.csv";
+
+    QualityScheduler quality_scheduler(
+        static_cast<std::size_t>(config.thread_count),
+        report_file
+    );
+
+    std::vector<ImageQuality> quality_results;
+    if (!quality_scheduler.run_future(image_files, &quality_results))
     {
-        LOG_ERROR("input directory does not exist");
-        return 1;
+        return false;
     }
 
-    if (!FileUtils::create_directory_if_not_exists(config.output_dir))
+    DatasetCleaner cleaner;
+    std::vector<ImageQuality> bad_images;
+
+    cleaner.split(quality_results, good_images, &bad_images);
+
+    std::string bad_images_file = config.output_dir + "/bad_images.txt";
+    if (!cleaner.write_bad_images(bad_images_file, bad_images))
     {
-        LOG_ERROR("failed to create output directory");
-        return 1;
+        LOG_ERROR("failed to write bad_images.txt");
+        return false;
     }
 
-    std::vector<std::string> image_files =
-        FileUtils::list_image_files(config.input_dir);
+    std::cout << "========== Dataset Clean Summary ==========" << std::endl;
+    std::cout << "raw images : " << image_files.size() << std::endl;
+    std::cout << "good images: " << good_images->size() << std::endl;
+    std::cout << "bad images : " << bad_images.size() << std::endl;
+    std::cout << "report file: " << report_file << std::endl;
+    std::cout << "bad list   : " << bad_images_file << std::endl;
+    std::cout << "===========================================" << std::endl;
 
-    if (image_files.empty())
+    return true;
+}
+
+bool run_preprocess_future(const Config& config,
+                           const std::vector<std::string>& image_files,
+                           TaskScheduler* scheduler)
+{
+    if (scheduler == nullptr)
     {
-        LOG_WARN("no image files found");
-        return 0;
+        return false;
     }
 
-    // 创建图像处理器和任务调度器
-    std::unique_ptr<ImageProcessor> processor =
-        FactoryProcessor::create(config.mode);
+    int success_count = 0;
+    int failed_count = 0;
+    std::vector<long long> costs;
+    std::vector<std::future<ImageResult> > futures;
 
-    if (!processor)
+    Timer wall_timer;
+
+    for (std::size_t i = 0; i < image_files.size(); ++i)
     {
-        LOG_ERROR("failed to create processor");
-        return 1;
-    }
-
-    TaskScheduler scheduler(config.thread_count, std::move(processor));
-
-    const int total_tasks = static_cast<int>(image_files.size());
-    Timer wall_timer; // 计时器，用于测量总耗时
-
-    if (config.use_future)
-    {
-        int success_count = 0; // 成功处理的图片数量
-        int failed_count = 0; // 处理失败的图片数量
-        std::vector<long long> costs; // 每个任务的耗时列表（毫秒）
-        std::vector<std::future<ImageResult> > futures; // 每个任务的 future 对象列表
-
-        for (std::size_t i = 0; i < image_files.size(); ++i)
+        cv::Mat image = cv::imread(image_files[i]);
+        if (image.empty())
         {
-            cv::Mat image = cv::imread(image_files[i]);
-            if (image.empty())
-            {
-                ++failed_count;
-                costs.push_back(0); // 设置任务耗时为 0
-                continue;
-            }
-
-            std::string output_path =
-                FileUtils::build_output_path(config.output_dir,
-                                             image_files[i],
-                                             config.mode);
-
-            std::shared_ptr<ImageTask> task(
-                new ImageTask(static_cast<int>(i),
-                              image,
-                              image_files[i],
-                              output_path)
-            );
-
-            futures.push_back(scheduler.submit_future(task));
+            ++failed_count;
+            costs.push_back(0);
+            continue;
         }
 
-        for (std::size_t i = 0; i < futures.size(); ++i)
-        {
-            ImageResult result = futures[i].get();
-            costs.push_back(result.cost_ms);
+        std::string output_path =
+            FileUtils::build_output_path(config.output_dir,
+                                         image_files[i],
+                                         config.mode);
 
-            if (result.success)
-            {
-                ++success_count;
-            }
-            else
-            {
-                ++failed_count;
-                std::cout << "failed task " << result.task_id
-                          << ": " << result.error_message << std::endl;
-            }
-        }
+        std::shared_ptr<ImageTask> task(
+            new ImageTask(static_cast<int>(i),
+                          image,
+                          image_files[i],
+                          output_path)
+        );
 
-        print_performance_summary(total_tasks,
-                                  success_count,
-                                  failed_count,
-                                  wall_timer.elapsed_ms(),
-                                  costs);
-        return 0;
+        futures.push_back(scheduler->submit_future(task));
     }
 
-    // 不开 furture 模式，使用回调函数统计性能数据 
+    for (std::size_t i = 0; i < futures.size(); ++i)
+    {
+        ImageResult result = futures[i].get();
+        costs.push_back(result.cost_ms);
+
+        if (result.success)
+        {
+            ++success_count;
+        }
+        else
+        {
+            ++failed_count;
+            std::cout << "failed task " << result.task_id
+                      << ": " << result.error_message << std::endl;
+        }
+    }
+
+    print_performance_summary(static_cast<int>(image_files.size()),
+                              success_count,
+                              failed_count,
+                              wall_timer.elapsed_ms(),
+                              costs);
+
+    return failed_count == 0;
+}
+
+bool run_preprocess_callback(const Config& config,
+                             const std::vector<std::string>& image_files,
+                             TaskScheduler* scheduler)
+{
+    if (scheduler == nullptr)
+    {
+        return false;
+    }
+
     int finished_count = 0;
     std::atomic<int> success_count(0);
     std::atomic<int> failed_count(0);
+
     std::vector<long long> costs;
-    std::mutex costs_mutex; // 保护 costs 向量的互斥锁
+    std::mutex costs_mutex;
 
-    std::mutex finished_mutex; // 保护 finished_count 的互斥锁
-    std::condition_variable finish_cv; // 用于等待所有任务完成的条件变量
+    std::mutex finished_mutex;
+    std::condition_variable finish_cv;
 
-    // 因为 std::mutex 不能拷贝，所以不能普通值捕获, 
-    // 需要使用引用捕获，或者使用 std::ref 包装一下
+    Timer wall_timer;
+
     TaskScheduler::Callback callback =
         [&finished_count,
          &success_count,
@@ -223,10 +242,10 @@ int main(int argc, char** argv)
 
             {
                 std::lock_guard<std::mutex> lock(finished_mutex);
-                finished_count++;
+                ++finished_count;
             }
-                
-            finish_cv.notify_one(); // 通知等待的主线程
+
+            finish_cv.notify_one();
         };
 
     for (std::size_t i = 0; i < image_files.size(); ++i)
@@ -242,9 +261,9 @@ int main(int argc, char** argv)
             failed_count.fetch_add(1);
             {
                 std::lock_guard<std::mutex> lock(finished_mutex);
-                finished_count++;
+                ++finished_count;
             }
-            finish_cv.notify_one(); // 通知等待的主线程
+            finish_cv.notify_one();
             continue;
         }
 
@@ -260,21 +279,99 @@ int main(int argc, char** argv)
                           output_path)
         );
 
-        scheduler.submit(task, callback);
+        scheduler->submit(task, callback);
     }
 
     {
         std::unique_lock<std::mutex> lock(finished_mutex);
-        finish_cv.wait(lock, [&finished_count, total_tasks]() {
-            return finished_count >= total_tasks;
+        finish_cv.wait(lock, [&finished_count, &image_files]() {
+            return finished_count >= static_cast<int>(image_files.size());
         });
     }
 
-    print_performance_summary(total_tasks,
+    print_performance_summary(static_cast<int>(image_files.size()),
                               success_count.load(),
                               failed_count.load(),
                               wall_timer.elapsed_ms(),
                               costs);
 
-    return 0;
+    return failed_count.load() == 0;
+}
+
+} // namespace
+
+int main(int argc, char** argv)
+{
+    Config config;
+    if (!config.parse(argc, argv, &config))
+    {
+        return 1;
+    }
+
+    if (!FileUtils::is_directory(config.input_dir))
+    {
+        LOG_ERROR("input directory does not exist");
+        return 1;
+    }
+
+    if (!FileUtils::create_directory_if_not_exists(config.output_dir))
+    {
+        LOG_ERROR("failed to create output directory");
+        return 1;
+    }
+
+    std::vector<std::string> image_files =
+        FileUtils::list_image_files(config.input_dir);
+
+    if (image_files.empty())
+    {
+        LOG_WARN("no image files found");
+        return 0;
+    }
+
+    // quality 模式只做质量检测和坏图列表输出，不做预处理。
+    if (config.mode == "quality")
+    {
+        std::vector<std::string> good_images;
+        return run_quality_stage(config, image_files, &good_images) ? 0 : 1;
+    }
+
+    // 正常预处理模式下，可以先做质量检测，只让 good images 进入后续处理。
+    std::vector<std::string> process_images = image_files;
+    if (config.enable_quality)
+    {
+        if (!run_quality_stage(config, image_files, &process_images))
+        {
+            return 1;
+        }
+
+        if (process_images.empty())
+        {
+            LOG_WARN("no good images after quality check");
+            return 0;
+        }
+    }
+
+    std::unique_ptr<ImageProcessor> processor =
+        FactoryProcessor::create(config.mode);
+
+    if (!processor)
+    {
+        LOG_ERROR("failed to create processor");
+        return 1;
+    }
+
+    TaskScheduler scheduler(config.thread_count, std::move(processor));
+
+    bool ok = false;
+    if (config.use_future)
+    {
+        ok = run_preprocess_future(config, process_images, &scheduler);
+    }
+    else
+    {
+        ok = run_preprocess_callback(config, process_images, &scheduler);
+    }
+
+    return ok ? 0 : 1;
 }

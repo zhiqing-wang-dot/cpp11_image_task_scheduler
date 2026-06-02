@@ -23,6 +23,10 @@ add_executable(image_task_scheduler
     src/config.cpp
     src/thread_pool.cpp
     src/task_scheduler.cpp
+    src/quality_analyzer.cpp
+    src/quality_report_write.cpp
+    src/quality_scheduler.cpp
+    src/dataset_cleaner.cpp
 )
 
 target_include_directories(image_task_scheduler PRIVATE

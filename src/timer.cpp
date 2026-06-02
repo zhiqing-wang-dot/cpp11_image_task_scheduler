@@ -1,7 +1,8 @@
 #include "image_task_scheduler/timer.hpp"
 
 Timer::Timer() 
-: start_(std::chrono::steady_clock::now()) {}
+: start_(std::chrono::steady_clock::now()) 
+{ }
 
 void Timer::reset() 
 {

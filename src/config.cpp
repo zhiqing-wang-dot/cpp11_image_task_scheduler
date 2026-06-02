@@ -39,6 +39,7 @@ Config::Config()
 , thread_count(4)
 , mode("sobel")
 , use_future(false) 
+, enable_quality(true)
 { }
 
 bool Config::parse(int argc, char** argv, Config* config)
@@ -86,6 +87,14 @@ bool Config::parse(int argc, char** argv, Config* config)
                 return false;
             }
         }
+        else if (arg == "--enable_quality")
+        {
+            if (!para_bool(value, &config->enable_quality))
+            {
+                print_usage();
+                return false;
+            }
+        }
         else
         {
             print_usage();
@@ -113,10 +122,14 @@ void Config::print_usage() // 打印使用说明
               << "--mode sobel "
               << "--use_future false\n"
               << "\n"
-              << "Modes: gray, sobel, resize, blur\n";
+              << "Modes: gray, sobel, resize, blur, quality\n";
 }
 
 bool Config::is_valid_mode() const
 {
-    return mode == "sobel" || mode == "gray" || mode == "blur" || mode == "resize";
+    return mode == "sobel" || 
+            mode == "gray" || 
+            mode == "blur" || 
+            mode == "resize" ||
+            mode == "quality";
 }

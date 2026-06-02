@@ -177,6 +177,30 @@ src/config.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/config.cpp.s
 .PHONY : src/config.cpp.s
 
+src/dataset_cleaner.o: src/dataset_cleaner.cpp.o
+.PHONY : src/dataset_cleaner.o
+
+# target to build an object file
+src/dataset_cleaner.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o
+.PHONY : src/dataset_cleaner.cpp.o
+
+src/dataset_cleaner.i: src/dataset_cleaner.cpp.i
+.PHONY : src/dataset_cleaner.i
+
+# target to preprocess a source file
+src/dataset_cleaner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.i
+.PHONY : src/dataset_cleaner.cpp.i
+
+src/dataset_cleaner.s: src/dataset_cleaner.cpp.s
+.PHONY : src/dataset_cleaner.s
+
+# target to generate assembly for a file
+src/dataset_cleaner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.s
+.PHONY : src/dataset_cleaner.cpp.s
+
 src/factory_processor.o: src/factory_processor.cpp.o
 .PHONY : src/factory_processor.o
 
@@ -321,6 +345,78 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/quality_analyzer.o: src/quality_analyzer.cpp.o
+.PHONY : src/quality_analyzer.o
+
+# target to build an object file
+src/quality_analyzer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.o
+.PHONY : src/quality_analyzer.cpp.o
+
+src/quality_analyzer.i: src/quality_analyzer.cpp.i
+.PHONY : src/quality_analyzer.i
+
+# target to preprocess a source file
+src/quality_analyzer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.i
+.PHONY : src/quality_analyzer.cpp.i
+
+src/quality_analyzer.s: src/quality_analyzer.cpp.s
+.PHONY : src/quality_analyzer.s
+
+# target to generate assembly for a file
+src/quality_analyzer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.s
+.PHONY : src/quality_analyzer.cpp.s
+
+src/quality_report_write.o: src/quality_report_write.cpp.o
+.PHONY : src/quality_report_write.o
+
+# target to build an object file
+src/quality_report_write.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.o
+.PHONY : src/quality_report_write.cpp.o
+
+src/quality_report_write.i: src/quality_report_write.cpp.i
+.PHONY : src/quality_report_write.i
+
+# target to preprocess a source file
+src/quality_report_write.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.i
+.PHONY : src/quality_report_write.cpp.i
+
+src/quality_report_write.s: src/quality_report_write.cpp.s
+.PHONY : src/quality_report_write.s
+
+# target to generate assembly for a file
+src/quality_report_write.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.s
+.PHONY : src/quality_report_write.cpp.s
+
+src/quality_scheduler.o: src/quality_scheduler.cpp.o
+.PHONY : src/quality_scheduler.o
+
+# target to build an object file
+src/quality_scheduler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.o
+.PHONY : src/quality_scheduler.cpp.o
+
+src/quality_scheduler.i: src/quality_scheduler.cpp.i
+.PHONY : src/quality_scheduler.i
+
+# target to preprocess a source file
+src/quality_scheduler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.i
+.PHONY : src/quality_scheduler.cpp.i
+
+src/quality_scheduler.s: src/quality_scheduler.cpp.s
+.PHONY : src/quality_scheduler.s
+
+# target to generate assembly for a file
+src/quality_scheduler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.s
+.PHONY : src/quality_scheduler.cpp.s
+
 src/resize_processor.o: src/resize_processor.cpp.o
 .PHONY : src/resize_processor.o
 
@@ -456,6 +552,9 @@ help:
 	@echo "... src/config.o"
 	@echo "... src/config.i"
 	@echo "... src/config.s"
+	@echo "... src/dataset_cleaner.o"
+	@echo "... src/dataset_cleaner.i"
+	@echo "... src/dataset_cleaner.s"
 	@echo "... src/factory_processor.o"
 	@echo "... src/factory_processor.i"
 	@echo "... src/factory_processor.s"
@@ -474,6 +573,15 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/quality_analyzer.o"
+	@echo "... src/quality_analyzer.i"
+	@echo "... src/quality_analyzer.s"
+	@echo "... src/quality_report_write.o"
+	@echo "... src/quality_report_write.i"
+	@echo "... src/quality_report_write.s"
+	@echo "... src/quality_scheduler.o"
+	@echo "... src/quality_scheduler.i"
+	@echo "... src/quality_scheduler.s"
 	@echo "... src/resize_processor.o"
 	@echo "... src/resize_processor.i"
 	@echo "... src/resize_processor.s"

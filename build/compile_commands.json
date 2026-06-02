@@ -76,5 +76,29 @@
   "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/task_scheduler.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/task_scheduler.cpp",
   "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/task_scheduler.cpp",
   "output": "CMakeFiles/image_task_scheduler.dir/src/task_scheduler.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_analyzer.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_analyzer.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/quality_analyzer.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_report_write.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_report_write.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/quality_report_write.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_scheduler.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/quality_scheduler.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/quality_scheduler.cpp.o"
+},
+{
+  "directory": "/home/wzq/MyProject/cpp11_image_task_scheduler/build",
+  "command": "/usr/bin/c++  -I/home/wzq/MyProject/cpp11_image_task_scheduler/include -isystem /usr/include/opencv4 -g -std=c++11 -o CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o -c /home/wzq/MyProject/cpp11_image_task_scheduler/src/dataset_cleaner.cpp",
+  "file": "/home/wzq/MyProject/cpp11_image_task_scheduler/src/dataset_cleaner.cpp",
+  "output": "CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o"
 }
 ]

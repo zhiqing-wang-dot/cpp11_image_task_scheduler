@@ -1,0 +1,5 @@
+image_path,reason
+/home/wzq/MyProject/realtime_image_service/Depth-Anything-V2-main/assets/examples/demo05.jpg,too_bright
+/home/wzq/MyProject/realtime_image_service/Depth-Anything-V2-main/assets/examples/demo11.jpg,blurry
+/home/wzq/MyProject/realtime_image_service/Depth-Anything-V2-main/assets/examples/demo12.jpg,blurry
+/home/wzq/MyProject/realtime_image_service/Depth-Anything-V2-main/assets/examples/demo17.jpg,blurry
