@@ -18,6 +18,9 @@ class QualityScheduler
 public:
     // 完成创建线程池和报告文件的作用
     QualityScheduler(std::size_t thread_num, const std::string& report_file);
+    QualityScheduler(std::size_t thread_num,
+                     const std::string& report_file,
+                     const QualityThresholds& thresholds);
     ~QualityScheduler() = default;
 
     // callback 模式

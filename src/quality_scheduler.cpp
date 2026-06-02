@@ -18,6 +18,14 @@ QualityScheduler::QualityScheduler(std::size_t thread_num, const std::string& re
 , report_writer_(report_file)
 { }
 
+QualityScheduler::QualityScheduler(std::size_t thread_num,
+                                   const std::string& report_file,
+                                   const QualityThresholds& thresholds)
+: thread_pool_(thread_num)
+, quality_analyzer_(thresholds)
+, report_writer_(report_file)
+{ }
+
 ImageQuality QualityScheduler::analyze_one(int task_id, 
                                            const std::string& image_file) const
 {
@@ -251,4 +259,3 @@ bool QualityScheduler::run_future(const std::vector<std::string>& image_files)
 {
     return run_future(image_files, nullptr);
 }
-

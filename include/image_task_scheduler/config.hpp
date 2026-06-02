@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "image_task_scheduler/image_quality.hpp"
+
 class Config
 {
 public:
@@ -17,6 +19,7 @@ public:
     // 先质检
     // 只处理 good_images
     bool enable_quality;
+    QualityThresholds quality_thresholds;
 
     Config();
 

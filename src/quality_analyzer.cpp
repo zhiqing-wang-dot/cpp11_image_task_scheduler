@@ -2,6 +2,14 @@
 
 #include <chrono>
 
+QualityAnalyzer::QualityAnalyzer()
+: thresholds_()
+{ }
+
+QualityAnalyzer::QualityAnalyzer(const QualityThresholds& thresholds)
+: thresholds_(thresholds)
+{ }
+
 ImageQuality QualityAnalyzer::analyze(int task_id, 
                                       const std::string& image_path, 
                                       const cv::Mat& image) const
@@ -69,11 +77,11 @@ ImageQuality QualityAnalyzer::analyze(int task_id,
     quality.edge_density = static_cast<double>(cv::countNonZero(edges)) 
                             / (gray.rows * gray.cols);
 
-    quality.blurry = quality.sharpness < 100.0;
-    quality.too_dark = quality.brightness < 40.0;
-    quality.too_bright = quality.brightness > 220.0;
-    quality.low_contrast = quality.contrast < 20.0;
-    quality.low_texture = quality.edge_density < 0.01;
+    quality.blurry = quality.sharpness < thresholds_.sharpness_threshold;
+    quality.too_dark = quality.brightness < thresholds_.dark_threshold;
+    quality.too_bright = quality.brightness > thresholds_.bright_threshold;
+    quality.low_contrast = quality.contrast < thresholds_.contrast_threshold;
+    quality.low_texture = quality.edge_density < thresholds_.edge_density_threshold;
 
     quality.cost_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
                         std::chrono::steady_clock::now() - time).count();

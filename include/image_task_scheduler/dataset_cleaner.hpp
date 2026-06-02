@@ -1,5 +1,6 @@
 #pragma once 
 
+#include <string>
 #include <vector>
 
 #include "image_task_scheduler/image_quality.hpp"

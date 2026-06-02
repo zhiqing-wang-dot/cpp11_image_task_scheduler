@@ -201,6 +201,30 @@ src/dataset_cleaner.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.s
 .PHONY : src/dataset_cleaner.cpp.s
 
+src/dataset_pipline.o: src/dataset_pipline.cpp.o
+.PHONY : src/dataset_pipline.o
+
+# target to build an object file
+src/dataset_pipline.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/dataset_pipline.cpp.o
+.PHONY : src/dataset_pipline.cpp.o
+
+src/dataset_pipline.i: src/dataset_pipline.cpp.i
+.PHONY : src/dataset_pipline.i
+
+# target to preprocess a source file
+src/dataset_pipline.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/dataset_pipline.cpp.i
+.PHONY : src/dataset_pipline.cpp.i
+
+src/dataset_pipline.s: src/dataset_pipline.cpp.s
+.PHONY : src/dataset_pipline.s
+
+# target to generate assembly for a file
+src/dataset_pipline.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_task_scheduler.dir/build.make CMakeFiles/image_task_scheduler.dir/src/dataset_pipline.cpp.s
+.PHONY : src/dataset_pipline.cpp.s
+
 src/factory_processor.o: src/factory_processor.cpp.o
 .PHONY : src/factory_processor.o
 
@@ -555,6 +579,9 @@ help:
 	@echo "... src/dataset_cleaner.o"
 	@echo "... src/dataset_cleaner.i"
 	@echo "... src/dataset_cleaner.s"
+	@echo "... src/dataset_pipline.o"
+	@echo "... src/dataset_pipline.i"
+	@echo "... src/dataset_pipline.s"
 	@echo "... src/factory_processor.o"
 	@echo "... src/factory_processor.i"
 	@echo "... src/factory_processor.s"

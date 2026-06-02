@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/wzq/MyProject/cpp11_image_task_scheduler/src/blur_processor.cpp" "CMakeFiles/image_task_scheduler.dir/src/blur_processor.cpp.o" "gcc" "CMakeFiles/image_task_scheduler.dir/src/blur_processor.cpp.o.d"
   "/home/wzq/MyProject/cpp11_image_task_scheduler/src/config.cpp" "CMakeFiles/image_task_scheduler.dir/src/config.cpp.o" "gcc" "CMakeFiles/image_task_scheduler.dir/src/config.cpp.o.d"
   "/home/wzq/MyProject/cpp11_image_task_scheduler/src/dataset_cleaner.cpp" "CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o" "gcc" "CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o.d"
+  "/home/wzq/MyProject/cpp11_image_task_scheduler/src/dataset_pipline.cpp" "CMakeFiles/image_task_scheduler.dir/src/dataset_pipline.cpp.o" "gcc" "CMakeFiles/image_task_scheduler.dir/src/dataset_pipline.cpp.o.d"
   "/home/wzq/MyProject/cpp11_image_task_scheduler/src/factory_processor.cpp" "CMakeFiles/image_task_scheduler.dir/src/factory_processor.cpp.o" "gcc" "CMakeFiles/image_task_scheduler.dir/src/factory_processor.cpp.o.d"
   "/home/wzq/MyProject/cpp11_image_task_scheduler/src/file_utils.cpp" "CMakeFiles/image_task_scheduler.dir/src/file_utils.cpp.o" "gcc" "CMakeFiles/image_task_scheduler.dir/src/file_utils.cpp.o.d"
   "/home/wzq/MyProject/cpp11_image_task_scheduler/src/gray_processor.cpp" "CMakeFiles/image_task_scheduler.dir/src/gray_processor.cpp.o" "gcc" "CMakeFiles/image_task_scheduler.dir/src/gray_processor.cpp.o.d"

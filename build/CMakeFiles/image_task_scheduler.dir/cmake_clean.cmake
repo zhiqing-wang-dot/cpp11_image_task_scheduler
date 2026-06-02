@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/image_task_scheduler.dir/src/config.cpp.o.d"
   "CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o"
   "CMakeFiles/image_task_scheduler.dir/src/dataset_cleaner.cpp.o.d"
+  "CMakeFiles/image_task_scheduler.dir/src/dataset_pipline.cpp.o"
+  "CMakeFiles/image_task_scheduler.dir/src/dataset_pipline.cpp.o.d"
   "CMakeFiles/image_task_scheduler.dir/src/factory_processor.cpp.o"
   "CMakeFiles/image_task_scheduler.dir/src/factory_processor.cpp.o.d"
   "CMakeFiles/image_task_scheduler.dir/src/file_utils.cpp.o"

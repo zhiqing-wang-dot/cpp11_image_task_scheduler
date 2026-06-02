@@ -1,6 +1,23 @@
 #pragma once
 #include <string>
 
+struct QualityThresholds
+{
+    double sharpness_threshold;
+    double dark_threshold;
+    double bright_threshold;
+    double contrast_threshold;
+    double edge_density_threshold;
+
+    QualityThresholds()
+    : sharpness_threshold(100.0)
+    , dark_threshold(40.0)
+    , bright_threshold(220.0)
+    , contrast_threshold(20.0)
+    , edge_density_threshold(0.01)
+    { }
+};
+
 struct ImageQuality 
 {
     // 任务基础信息
@@ -51,4 +68,3 @@ struct ImageQuality
     , low_texture(false)
     , cost_ms(0) {}  
 };
-

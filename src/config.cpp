@@ -1,5 +1,6 @@
 #include "image_task_scheduler/config.hpp"
 
+#include <cstdlib>
 #include <iostream>
 
 namespace 
@@ -31,6 +32,20 @@ bool para_bool (const std::string& text, bool* value)
     }
     return false;
 }
+
+bool para_double(const std::string& text, double* value)
+{
+    char* end = nullptr;
+    double result = std::strtod(text.c_str(), &end);
+
+    if (end == text.c_str() || *end != '\0')
+    {
+        return false;
+    }
+
+    *value = result;
+    return true;
+}
 } // namespace 
 
 Config::Config()
@@ -40,6 +55,7 @@ Config::Config()
 , mode("sobel")
 , use_future(false) 
 , enable_quality(true)
+, quality_thresholds()
 { }
 
 bool Config::parse(int argc, char** argv, Config* config)
@@ -95,6 +111,46 @@ bool Config::parse(int argc, char** argv, Config* config)
                 return false;
             }
         }
+        else if (arg == "--sharpness_threshold")
+        {
+            if (!para_double(value, &config->quality_thresholds.sharpness_threshold))
+            {
+                print_usage();
+                return false;
+            }
+        }
+        else if (arg == "--dark_threshold")
+        {
+            if (!para_double(value, &config->quality_thresholds.dark_threshold))
+            {
+                print_usage();
+                return false;
+            }
+        }
+        else if (arg == "--bright_threshold")
+        {
+            if (!para_double(value, &config->quality_thresholds.bright_threshold))
+            {
+                print_usage();
+                return false;
+            }
+        }
+        else if (arg == "--contrast_threshold")
+        {
+            if (!para_double(value, &config->quality_thresholds.contrast_threshold))
+            {
+                print_usage();
+                return false;
+            }
+        }
+        else if (arg == "--edge_density_threshold")
+        {
+            if (!para_double(value, &config->quality_thresholds.edge_density_threshold))
+            {
+                print_usage();
+                return false;
+            }
+        }
         else
         {
             print_usage();
@@ -120,9 +176,15 @@ void Config::print_usage() // 打印使用说明
               << "--output ./output "
               << "--threads 4 "
               << "--mode sobel "
-              << "--use_future false\n"
+              << "--use_future false "
+              << "--enable_quality true "
+              << "--sharpness_threshold 100 "
+              << "--dark_threshold 40 "
+              << "--bright_threshold 220 "
+              << "--contrast_threshold 20 "
+              << "--edge_density_threshold 0.01\n"
               << "\n"
-              << "Modes: gray, sobel, resize, blur, quality\n";
+              << "Modes: gray, sobel, resize, blur\n";
 }
 
 bool Config::is_valid_mode() const
@@ -130,6 +192,5 @@ bool Config::is_valid_mode() const
     return mode == "sobel" || 
             mode == "gray" || 
             mode == "blur" || 
-            mode == "resize" ||
-            mode == "quality";
+            mode == "resize";
 }

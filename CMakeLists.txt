@@ -27,6 +27,7 @@ add_executable(image_task_scheduler
     src/quality_report_write.cpp
     src/quality_scheduler.cpp
     src/dataset_cleaner.cpp
+    src/dataset_pipline.cpp
 )
 
 target_include_directories(image_task_scheduler PRIVATE

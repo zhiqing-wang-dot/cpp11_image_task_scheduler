@@ -2,20 +2,20 @@
 
 ## 1. 项目定位
 
-本项目可以概括为：
+本项目当前版本可以概括为：
 
 ```txt
-基于 C++11 和 OpenCV 的多线程图像处理与数据集质量检测框架
+基于 C++11 和 OpenCV 的多线程图像数据集质检、清洗与预处理 Pipeline
 ```
 
 项目分为两条主线：
 
 ```txt
-1. 图像处理主线
-   gray / sobel / resize / blur
+1. 数据集质量检测与清洗主线
+   多线程质检 -> report.csv -> bad_images.txt -> good_images
 
-2. 数据集质量检测主线
-   quality 模式，输出 report.csv
+2. 图像预处理主线
+   对 good_images 执行 gray / sobel / resize / blur
 ```
 
 它体现的能力包括：
@@ -28,6 +28,8 @@ callback / future
 OpenCV 图像处理
 OpenCV 图像质量指标计算
 CSV 报告输出
+数据集清洗
+Pipeline 流程编排
 模块化工程设计
 ```
 
@@ -591,4 +593,108 @@ QualityScheduler 封装数据集质检调度逻辑，使 main 更干净，也方
 
 ```txt
 这个项目底层用 C++11 线程池实现批量任务并发调度，上层通过 ImageProcessor 多态扩展 OpenCV 图像处理算法，并进一步扩展 QualityScheduler 实现多线程图像数据集质量检测和 CSV 报告输出。
+```
+
+## 15. 当前版本简历写法
+
+下面这版更贴合现在的 `image_task_scheduler` 项目：它已经从“批量图像处理 demo”升级成了“数据集质检 + 清洗 + 预处理 Pipeline”。
+
+### 15.1 简历项目名称
+
+推荐写法：
+
+```txt
+基于 C++11 的多线程图像数据集质检与预处理 Pipeline
+```
+
+如果岗位偏 C++ 后端 / Linux C++：
+
+```txt
+C++11 多线程图像任务调度与数据集清洗框架
+```
+
+如果岗位偏视觉 / 算法部署：
+
+```txt
+基于 OpenCV 的图像数据集质量检测与并发预处理系统
+```
+
+### 15.2 简历一句话描述
+
+```txt
+基于 C++11、OpenCV 和 CMake 实现图像数据集质检与预处理 Pipeline，支持目录图片扫描、多线程质量评估、坏图筛选、CSV 报告生成，并对合格图片并发执行 Gray/Sobel/Resize/Blur 等预处理任务。
+```
+
+### 15.3 技术栈
+
+```txt
+C++11、OpenCV、CMake、Linux、STL、std::thread、std::mutex、std::condition_variable、std::future、std::promise、std::atomic、std::unique_ptr、std::shared_ptr、lambda、RAII
+```
+
+### 15.4 简历项目描述：精简版
+
+适合简历空间有限时使用：
+
+```txt
+基于 C++11 实现多线程图像数据集质检与预处理 Pipeline，支持批量扫描图片、并发计算亮度/对比度/清晰度/边缘密度等质量指标，输出 report.csv 和 bad_images.txt，并对合格图片执行 Gray、Sobel、Resize、Blur 等 OpenCV 预处理。项目通过线程池、任务队列、callback/future、工厂模式和 RAII 实现模块化调度与资源安全管理。
+```
+
+### 15.5 简历项目描述：详细版
+
+适合放在项目经历中：
+
+```txt
+基于 C++11 和 OpenCV 设计并实现图像数据集质检与预处理 Pipeline。系统首先扫描输入目录图片，通过 QualityScheduler 将质量检测任务提交到线程池，并由 QualityAnalyzer 计算亮度、对比度、Laplacian 清晰度、Canny 边缘密度等指标，生成 report.csv；随后使用 DatasetCleaner 根据阈值筛选 bad images，输出 bad_images.txt，并仅对合格图片执行后续预处理。预处理阶段通过 TaskScheduler 调度 ImageTask，基于 ImageProcessor 抽象接口和 FactoryProcessor 工厂模式支持 Gray、Sobel、Resize、Blur 等算法扩展，同时支持 callback 和 std::future 两种异步结果获取方式，并统计任务耗时和吞吐量。
+```
+
+### 15.6 简历亮点 Bullet
+
+推荐放 4 到 6 条，不要全部堆上去：
+
+```txt
+- 基于生产者-消费者模型实现 C++11 线程池，使用 std::mutex 和 std::condition_variable 完成任务队列同步、worker 唤醒和安全退出。
+- 设计 DatasetPipline 串联数据准备、质量检测、坏图清洗和图像预处理阶段，将 main.cpp 简化为参数解析和流程启动。
+- 使用 QualityAnalyzer 计算 brightness、contrast、sharpness、edge_density 等质量指标，识别模糊、过暗、过曝、低对比度和低纹理图片。
+- 使用 QualityReportWriter 线程安全写入 report.csv，并通过 DatasetCleaner 输出 bad_images.txt，便于训练数据集清洗和问题图片追踪。
+- 通过 ImageProcessor 抽象接口和 FactoryProcessor 工厂模式解耦调度框架与具体算法，支持 Gray、Sobel、Resize、Blur 等处理器扩展。
+- 支持 callback 和 std::future 两种异步结果获取方式，使用 std::atomic 和 mutex 保证多线程统计结果正确。
+- 使用 RAII 管理线程池生命周期，在析构阶段 stop、notify_all 并 join worker，避免线程泄漏和 std::terminate。
+- 使用 std::chrono 统计总耗时、单任务耗时和吞吐量，为不同线程数下的性能对比提供依据。
+```
+
+### 15.7 更像企业项目的写法
+
+如果你想突出工程化，而不是只说“用了 OpenCV”，可以这样写：
+
+```txt
+项目重点不是单个图像算法，而是围绕数据集处理流程做工程化拆分：Config 负责参数和阈值配置，FileUtils 负责目录扫描和输出路径构造，QualityScheduler 负责并发质检调度，DatasetCleaner 负责合格/不合格样本拆分，TaskScheduler 负责预处理任务调度，ImageProcessor 负责算法扩展。各模块职责清晰，便于后续扩展更多质量指标、清洗策略和预处理算子。
+```
+
+### 15.8 面试时的项目介绍
+
+```txt
+这个项目是一个离线图像数据集处理 Pipeline。我把它分成两个阶段：第一阶段做数据集质检，线程池并发读取图片并计算亮度、对比度、清晰度和边缘密度，输出 report.csv；然后 DatasetCleaner 根据阈值筛出坏图，生成 bad_images.txt。第二阶段只对合格图片做预处理，TaskScheduler 把每张图片封装成 ImageTask，交给线程池执行具体 ImageProcessor，比如 Gray、Sobel、Resize、Blur。这样既能体现 C++11 多线程调度，也能解决视觉训练前的数据清洗问题。
+```
+
+### 15.9 和 VisionReactorServer 的衔接写法
+
+如果你的简历里同时放 `VisionReactorServer`，可以这样区分两个项目：
+
+```txt
+image_task_scheduler 是离线图像数据集处理项目，重点是 C++11 多线程任务调度、数据集质检和预处理 Pipeline；
+VisionReactorServer 是在线视觉推理服务项目，重点是 Linux 网络编程、epoll Reactor、自定义协议和 ONNX Runtime YOLO 推理。
+两个项目可以形成从离线数据处理到在线模型推理服务的完整视觉工程链路。
+```
+
+### 15.10 最推荐放到简历里的最终版本
+
+```txt
+基于 C++11 的多线程图像数据集质检与预处理 Pipeline
+技术栈：C++11、OpenCV、CMake、Linux、STL、std::thread、std::future、RAII
+
+- 设计并实现图像数据集处理 Pipeline，支持目录图片扫描、质量检测、坏图筛选和合格图片预处理，输出 report.csv 与 bad_images.txt。
+- 基于生产者-消费者模型实现线程池，使用 mutex、condition_variable 和任务队列完成并发调度，并在析构阶段安全 stop/join worker。
+- 使用 QualityAnalyzer 计算亮度、对比度、Laplacian 清晰度、Canny 边缘密度等指标，识别模糊、过暗、过曝、低对比度和低纹理图片。
+- 通过 ImageProcessor 抽象接口和 FactoryProcessor 工厂模式解耦算法模块，支持 Gray、Sobel、Resize、Blur 等 OpenCV 预处理算子扩展。
+- 支持 callback 和 std::future 两种异步结果获取方式，并统计总耗时、平均耗时、最大/最小耗时和吞吐量。
 ```
